@@ -424,7 +424,8 @@ async def get_dashboard():
     </div>
 
     <script>
-        const ws = new WebSocket(`ws://${window.location.host}/ws`);
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const ws = new WebSocket(`${protocol}//${window.location.host}/ws`);
         const status = document.getElementById('status');
         
         ws.onopen = function() {
